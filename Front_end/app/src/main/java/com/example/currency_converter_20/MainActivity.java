@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,7 +30,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void start(View view){
 
+        String entered_name = name.getText().toString();
         Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+        intent.putExtra("name", entered_name);
         startActivity(intent);
     }
 }
