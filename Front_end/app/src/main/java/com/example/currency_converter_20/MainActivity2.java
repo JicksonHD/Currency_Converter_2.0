@@ -6,13 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity2 extends AppCompatActivity {
 
     EditText lebanese;
     EditText usa;
-    
+    TextView result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         lebanese = (EditText) findViewById(R.id.lbp);
         usa = (EditText) findViewById(R.id.usd);
+        result = (TextView) findViewById(R.id.result);
 
         Intent x = getIntent();
         String name = x.getStringExtra("name");
@@ -50,7 +52,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         else if (lebanese == null && usa == null){
 
-
+            result.setText("You must enter either in LBP or in $");
         }
     }
 
