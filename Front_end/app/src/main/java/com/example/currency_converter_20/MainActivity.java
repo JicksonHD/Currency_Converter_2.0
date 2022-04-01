@@ -11,12 +11,36 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class MainActivity extends AppCompatActivity {
 
     EditText name;
     ImageView converter_logo;
 
     public class DownloadTask extends AsyncTask<String, Void, String> {
+        protected String doInBackground(String... urls){
+            String result = "";
+            URL url;
+            HttpURLConnection http;
+
+            try{
+                url = new URL(urls[0]);
+                http = (HttpURLConnection) url.openConnection();
+
+                InputStream in = http.getInputStream();
+                InputStreamReader reader =  new InputStreamReader(in);
+                int data = reader.read();
+                while( data != -1){
+                    char current = (char) data;
+
+                }
+            }catch(Exception e){
+
+            }
 
     }
     @Override
