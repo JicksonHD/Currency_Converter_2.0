@@ -39,7 +39,7 @@ public class MainActivity2 extends AppCompatActivity {
         double output_lebanese = 0;
         double output_usa = 0;
 
-        if (lebanese.getText().toString() == null && usa.getText().toString() != null){
+        if (lebanese.getText().toString().equalsIgnoreCase(null) && !(usa.getText().toString().equalsIgnoreCase(null))){
 
             double input_usd = Double.parseDouble(usa.getText().toString());
             output_lebanese = input_usd*25000;
@@ -47,7 +47,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         }
 
-        else if (usa.getText().toString() == null && lebanese.getText().toString() != null){
+        else if (usa.getText().toString().equalsIgnoreCase(null) && !(lebanese.getText().toString().equalsIgnoreCase(null))){
 
             double input_lbp = Double.parseDouble(lebanese.getText().toString());
             output_usa = input_lbp/25000;
@@ -55,7 +55,7 @@ public class MainActivity2 extends AppCompatActivity {
 
         }
 
-        else if (lebanese.getText().toString() == null && usa.getText().toString() == null){
+        else if (!(lebanese.getText().toString().equalsIgnoreCase(null)) && !(usa.getText().toString().equalsIgnoreCase(null))){
 
             result.setText("You must enter either in LBP or in $");
         }
