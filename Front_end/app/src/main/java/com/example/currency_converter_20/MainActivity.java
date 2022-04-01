@@ -3,6 +3,7 @@ package com.example.currency_converter_20;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.view.View;
@@ -15,6 +16,9 @@ public class MainActivity extends AppCompatActivity {
     EditText name;
     ImageView converter_logo;
 
+    public class DownloadTask extends AsyncTask<String, Void, String> {
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,5 +38,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
         intent.putExtra("name", entered_name);
         startActivity(intent);
+
+        String url = "https://lirarate.org/wp-json/lirarate/v2/rates?currency=LBP&_ver=t202233120";
+
+        DownloadTask task = new DownloadTask();
+        task.execute(url);
     }
 }
