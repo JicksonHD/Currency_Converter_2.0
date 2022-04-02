@@ -27,48 +27,7 @@ public class MainActivity extends AppCompatActivity {
     EditText name;
     ImageView converter_logo;
 
-    public class DownloadTask extends AsyncTask<String, Void, String> {
-        protected String doInBackground(String... urls){
-            String result = "";
-            URL url;
-            HttpURLConnection http;
 
-            try{
-                url = new URL(urls[0]);
-                http = (HttpURLConnection) url.openConnection();
-
-                InputStream in = http.getInputStream();
-                InputStreamReader reader =  new InputStreamReader(in);
-                int data = reader.read();
-                while( data != -1){
-                    char current = (char) data;
-                    result += current;
-                    data = reader.read();
-                }
-                return result;
-
-            }catch(Exception e){
-                e.printStackTrace();
-                return null;
-            }
-
-
-            }
-        protected void onPostExecute(String s){
-
-
-            try {
-                JSONObject json = new JSONObject(s);
-                String created = json.getString("buy_rate");
-                int amount =
-                Log.i("buy", created);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-        }
-
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,10 +38,7 @@ public class MainActivity extends AppCompatActivity {
         converter_logo = (ImageView) findViewById(R.id.converter);
         converter_logo.setTranslationX(-1000);
         converter_logo.animate().translationXBy(1000).setDuration(2000);
-        String url = "http://192.168.0.113/lau/project/Currency_Converter_2.0/back_end/project.php";
 
-        DownloadTask task = new DownloadTask();
-        task.execute(url);
 
     }
 
