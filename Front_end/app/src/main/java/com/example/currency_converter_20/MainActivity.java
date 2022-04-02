@@ -12,10 +12,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import javax.xml.transform.Result;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,9 +44,8 @@ public class MainActivity extends AppCompatActivity {
                     char current = (char) data;
                     result += current;
                     data = reader.read();
-
+                    Log.i("Result", result);
                 }
-                Log.i("Result:", result);
                 return result;
 
             }catch(Exception e){
@@ -52,6 +56,16 @@ public class MainActivity extends AppCompatActivity {
 
             }
         protected void onPostExecute(String s){
+
+
+//            try {
+//                JSONObject json = new JSONObject(s);
+//                String created = json.getString("buy");
+//                Log.i("buy", created);
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
+
         }
 
     }
@@ -65,19 +79,17 @@ public class MainActivity extends AppCompatActivity {
         converter_logo = (ImageView) findViewById(R.id.converter);
         converter_logo.setTranslationX(-1000);
         converter_logo.animate().translationXBy(1000).setDuration(2000);
+        String url = "https://lirarate.org/wp-json/lirarate/v2/rates?currency=LBP&_ver=t20224222";
+
+        DownloadTask task = new DownloadTask();
+        task.execute(url);
 
     }
 
-    public void start(View view){
+    public void start(View view) {
 
         String entered_name = name.getText().toString();
         Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
         intent.putExtra("name", entered_name);
         startActivity(intent);
-
-        String url = "https://lirarate.org/wp-json/lirarate/v2/rates?currency=LBP&_ver=t202233120";
-
-        DownloadTask task = new DownloadTask();
-        task.execute(url);
-    }
-}
+    }}
