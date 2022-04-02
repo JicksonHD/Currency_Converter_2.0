@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -36,16 +37,21 @@ public class MainActivity extends AppCompatActivity {
                 int data = reader.read();
                 while( data != -1){
                     char current = (char) data;
+                    result += current;
+                    data = reader.read();
 
                 }
-            }catch(Exception e){
+                Log.i("Result:", result);
+                return result;
 
+            }catch(Exception e){
+                e.printStackTrace();
+                return null;
             }
 
 
             }
         protected void onPostExecute(String s){
-
         }
 
     }
