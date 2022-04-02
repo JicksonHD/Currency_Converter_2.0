@@ -19,9 +19,12 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
+    //Declaring variables used in UI
     EditText name;
     ImageView converter_logo;
 
+
+    //API and database connection with front end
     public class DownloadTask extends AsyncTask<String, Void, String> {
         protected String doInBackground(String... urls){
             String result = "";
@@ -60,16 +63,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Declaring the variables used in UI
         name = (EditText) findViewById(R.id.name);
-
         converter_logo = (ImageView) findViewById(R.id.converter);
+        //Adding animation to logo
         converter_logo.setTranslationX(-1000);
         converter_logo.animate().translationXBy(1000).setDuration(2000);
 
     }
 
+    //Onclick method used on start button
     public void start(View view){
 
+        //Declaring and initializing variables that are being sent to page 2
         String entered_name = name.getText().toString();
         Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
         intent.putExtra("name", entered_name);
