@@ -28,7 +28,7 @@
     $array_length =  sizeof($result['buy']);//retrieving length
     
     $json = [];
-    $json ["Rate"] = (array) $result['buy'][$array_length - 1][1];
+    $json ["buy_rate"] = (array) $result['buy'][$array_length - 1][1];
     
     
     $json_response = json_encode($json);

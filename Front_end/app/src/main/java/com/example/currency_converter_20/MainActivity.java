@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
                     char current = (char) data;
                     result += current;
                     data = reader.read();
-                    Log.i("Result", result);
                 }
                 return result;
 
@@ -58,13 +57,14 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String s){
 
 
-//            try {
-//                JSONObject json = new JSONObject(s);
-//                String created = json.getString("buy");
-//                Log.i("buy", created);
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
+            try {
+                JSONObject json = new JSONObject(s);
+                String created = json.getString("buy_rate");
+                int amount =
+                Log.i("buy", created);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
         }
 
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         converter_logo = (ImageView) findViewById(R.id.converter);
         converter_logo.setTranslationX(-1000);
         converter_logo.animate().translationXBy(1000).setDuration(2000);
-        String url = "https://lirarate.org/wp-json/lirarate/v2/rates?currency=LBP&_ver=t20224222";
+        String url = "http://192.168.0.113/lau/project/Currency_Converter_2.0/back_end/project.php";
 
         DownloadTask task = new DownloadTask();
         task.execute(url);
