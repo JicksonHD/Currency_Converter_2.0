@@ -1,31 +1,34 @@
 <?php
     date_default_timezone_set('Asia/Beirut');
 
+    //finding the date and the time for API only allows access if the version is the same as current date and time to the hour
     $year = intval(date('Y'));
     $month = intval(date('m'));
     $day = intval(date('d'));
     $hour = intval(date('H'));
     
     
-    // Creating the variant part of the api which is the date and time
+    // adding them all
     $variant_part = strval($year.$month.$day.$hour);
     
+    
     $url = "https://lirarate.org/wp-json/lirarate/v2/rates?currency=LBP&_ver=t$variant_part";
+
+    //retreiving API information from the website
+    $curl = curl_init();
     
-    $ch_session = curl_init();
+    curl_setopt($curl, CURLOPT_URL, $url);//linking to APi
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);//returning information
     
-    curl_setopt($ch_session, CURLOPT_URL, $url);
-    curl_setopt($ch_session, CURLOPT_RETURNTRANSFER, true);
+    $response = curl_exec($curl);//executing return of information
     
-    $response = curl_exec($ch_session);
+    curl_close($curl);//ending session
     
-    curl_close($ch_session);
-    
-    $server_response = (array) json_decode($response,true);
-    $array_length =  sizeof($server_response['buy']);
+    $result = (array) json_decode($response,true);//writing in a simpler format
+    $array_length =  sizeof($result['buy']);//retrieving length
     
     $json = [];
-    $json ["Rate"] = (array) $server_response['buy'][$array_length - 1][1];
+    $json ["Rate"] = (array) $result['buy'][$array_length - 1][1];
     
     
     $json_response = json_encode($json);
