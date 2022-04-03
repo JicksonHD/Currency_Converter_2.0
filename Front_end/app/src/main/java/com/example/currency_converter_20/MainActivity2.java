@@ -20,6 +20,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+// everything other than the ability to send the values to the post API was not complete
 public class MainActivity2 extends AppCompatActivity {
 
     //Declaring variables that are used in the UI
