@@ -72,7 +72,7 @@ public class MainActivity2 extends AppCompatActivity {
 
             //If user did not enter anything and wants to convert he/she will be notified to enter at least one of the currencies to convert to another
 
-            result.setText("You must enter either in LBP or in $");
+            Toast.makeText(getApplicationContext(),"You must enter at least one of the currencies",Toast.LENGTH_LONG).show();
         }
     }
 
