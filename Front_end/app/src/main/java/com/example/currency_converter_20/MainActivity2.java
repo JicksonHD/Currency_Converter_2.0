@@ -28,7 +28,7 @@ public class MainActivity2 extends AppCompatActivity {
     TextView result;
     Button convert;
 
-    public class DownloadTask extends AsyncTask<String, Void, String> {
+    public class DownloadTask extends AsyncTask<String, Void, String> {// retrieving data from first API
         protected String doInBackground(String... urls){
             String result = "";
             URL url;
@@ -63,9 +63,8 @@ public class MainActivity2 extends AppCompatActivity {
 
             try {
                 JSONObject json = new JSONObject(s);
-                String created = json.getString("buy_rate");
-                int amount =
-                        Log.i("buy", created);
+                String created = json.getString("buy_rate");// string created contains the second API
+                int amount = Integer.parseInt(created);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -88,7 +87,7 @@ public class MainActivity2 extends AppCompatActivity {
         String name = x.getStringExtra("name");
         Toast.makeText(getApplicationContext(),"hello " + name, Toast.LENGTH_LONG).show();
 
-        String url = "http://192.168.0.113/lau/project/Currency_Converter_2.0/back_end/project.php";
+        String url = "http://192.168.0.113/lau/project/Currency_Converter_2.0/back_end/project.php";//url to api
 
         DownloadTask task = new DownloadTask();
         task.execute(url);
