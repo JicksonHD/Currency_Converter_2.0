@@ -47,6 +47,7 @@ public class MainActivity2 extends AppCompatActivity {
         if (lebanese.getText().toString().equalsIgnoreCase("") && !(usa.getText().toString().equalsIgnoreCase(""))){
 
             //If user entered an amount in $ and wants to convert to LBP
+            //dollar rate is 25k for testing the program (actual rate will be fetched with the help of the API)
 
             double input_usd = Double.parseDouble(usa.getText().toString());
             output_lebanese = input_usd*25000;
@@ -58,6 +59,7 @@ public class MainActivity2 extends AppCompatActivity {
         else if (usa.getText().toString().equalsIgnoreCase("") && !(lebanese.getText().toString().equalsIgnoreCase(""))){
 
             //If user entered an amount in LBP and wants to convert to $
+            //dollar rate is 25k for testing the program (actual rate will be fetched with the help of the API)
 
             double input_lbp = Double.parseDouble(lebanese.getText().toString());
             output_usa = input_lbp/25000;
