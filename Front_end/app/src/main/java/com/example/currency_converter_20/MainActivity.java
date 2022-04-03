@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
             //if condition to ensure that the user has entered his name in order to proceed
             if (name_is_entered){
-                
+
 
         }else {
                 Toast.makeText(getApplicationContext(),"You must enter your name (legislative reasons)",Toast.LENGTH_LONG).show();
