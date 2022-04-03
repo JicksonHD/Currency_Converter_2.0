@@ -13,10 +13,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+
+import javax.xml.transform.Result;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -55,11 +60,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
 
-            }
-        protected void onPostExecute(String s){
-        }
 
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +74,16 @@ public class MainActivity extends AppCompatActivity {
         converter_logo.setTranslationX(-1000);
         converter_logo.animate().translationXBy(1000).setDuration(2000);
 
+
     }
+
+    public void start(View view) {
+
+        String entered_name = name.getText().toString();
+        Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
+        intent.putExtra("name", entered_name);
+        startActivity(intent);
+    }}
 
     //Onclick method used on start button
     public void start(View view){
