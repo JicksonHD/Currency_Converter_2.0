@@ -20,7 +20,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
 public class MainActivity2 extends AppCompatActivity {
 
     //Declaring variables that are used in the UI
@@ -28,6 +27,7 @@ public class MainActivity2 extends AppCompatActivity {
     EditText usa;
     TextView result;
     Button convert;
+    int amount;
 
     public class DownloadTask extends AsyncTask<String, Void, String> {// retrieving data from first API
         protected String doInBackground(String... urls){
@@ -65,7 +65,7 @@ public class MainActivity2 extends AppCompatActivity {
             try {
                 JSONObject json = new JSONObject(s);
                 String created = json.getString("buy_rate");// string created contains the second API
-                int amount = Integer.parseInt(created);
+                amount = Integer.parseInt(created);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -106,10 +106,9 @@ public class MainActivity2 extends AppCompatActivity {
         if (lebanese.getText().toString().equalsIgnoreCase("") && !(usa.getText().toString().equalsIgnoreCase(""))){
 
             //If user entered an amount in $ and wants to convert to LBP
-            //dollar rate is 25k for testing the program (actual rate will be fetched with the help of the API)
 
             double input_usd = Double.parseDouble(usa.getText().toString());
-            output_lebanese = input_usd*25000;
+            output_lebanese = input_usd*amount;
             lebanese.setText(output_lebanese + " LBP");
             result.setText("");
 
@@ -118,10 +117,9 @@ public class MainActivity2 extends AppCompatActivity {
         else if (usa.getText().toString().equalsIgnoreCase("") && !(lebanese.getText().toString().equalsIgnoreCase(""))){
 
             //If user entered an amount in LBP and wants to convert to $
-            //dollar rate is 25k for testing the program (actual rate will be fetched with the help of the API)
 
             double input_lbp = Double.parseDouble(lebanese.getText().toString());
-            output_usa = input_lbp/25000;
+            output_usa = input_lbp/amount;
             usa.setText(output_usa + " $");
             result.setText("");
 
