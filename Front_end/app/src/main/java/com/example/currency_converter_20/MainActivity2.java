@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -39,6 +40,9 @@ public class MainActivity2 extends AppCompatActivity {
 
                 InputStream in = http.getInputStream();
                 InputStreamReader reader =  new InputStreamReader(in);
+
+                OutputStream out = http.getOutputStream();
+
                 int data = reader.read();
                 while( data != -1){
                     char current = (char) data;
