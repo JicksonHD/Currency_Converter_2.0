@@ -32,32 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     //API and database connection with front end
-    public class DownloadTask extends AsyncTask<String, Void, String> {
-        protected String doInBackground(String... urls){
-            String result = "";
-            URL url;
-            HttpURLConnection http;
 
-            try{
-                url = new URL(urls[0]);
-                http = (HttpURLConnection) url.openConnection();
-
-                InputStream in = http.getInputStream();
-                InputStreamReader reader =  new InputStreamReader(in);
-                int data = reader.read();
-                while( data != -1){
-                    char current = (char) data;
-                    result += current;
-                    data = reader.read();
-
-                }
-                Log.i("Result:", result);
-                return result;
-
-            }catch(Exception e){
-                e.printStackTrace();
-                return null;
-            }
 
 
 
@@ -76,14 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-    public void start(View view) {
-
-        String entered_name = name.getText().toString();
-        Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
-        intent.putExtra("name", entered_name);
-        startActivity(intent);
-    }}
 
     //Onclick method used on start button
     public void start(View view){
@@ -105,10 +72,5 @@ public class MainActivity extends AppCompatActivity {
                 //Legislative reasons to make it more legitimate
                 Toast.makeText(getApplicationContext(),"You must enter your name (legislative reasons)",Toast.LENGTH_LONG).show();
             }
-
-        String url = "https://lirarate.org/wp-json/lirarate/v2/rates?currency=LBP&_ver=t202233120";
-
-        DownloadTask task = new DownloadTask();
-        task.execute(url);
     }
 }
