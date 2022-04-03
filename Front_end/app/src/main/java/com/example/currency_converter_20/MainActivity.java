@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         }else {
+                //Legislative reasons to make it more legitimate
                 Toast.makeText(getApplicationContext(),"You must enter your name (legislative reasons)",Toast.LENGTH_LONG).show();
             }
 
