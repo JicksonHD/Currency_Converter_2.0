@@ -16,7 +16,7 @@ public class MainActivity2 extends AppCompatActivity {
     EditText lebanese;
     EditText usa;
     TextView result;
-
+    Button convert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class MainActivity2 extends AppCompatActivity {
         lebanese = (EditText) findViewById(R.id.lebanese);
         usa = (EditText) findViewById(R.id.usa);
         result = (TextView) findViewById(R.id.result);
-        
+        convert = (Button) findViewById(R.id.converter);
 
         //Getting information from page 1 (Enter your name)
         Intent x = getIntent();
